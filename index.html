@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day 🌹</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: radial-gradient(circle at top, #e6f4ff, #b3ddff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .message {
+        position: relative;
+        z-index: 5;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(12px);
+        border-radius: 24px;
+        padding: 38px 42px;
+        text-align: center;
+        box-shadow: 0 12px 40px rgba(100, 150, 200, 0.35);
+        animation: fadeIn 2s ease;
+    }
+
+    .message h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.8rem;
+        color: #b30047;
+        margin-bottom: 12px;
+    }
+
+    .message p {
+        font-size: 1.25rem;
+        color: #4a0030;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .float {
+        position: absolute;
+        bottom: -100px;
+        font-size: 4.6rem;   /* BIG roses */
+        opacity: 0.95;
+        animation: floatUp linear infinite;
+        filter: drop-shadow(0 0 12px rgba(180, 0, 80, 0.5));
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(0) scale(0.85);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(-120vh) scale(1.2);
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="message">
+    <h1>Happy Rose Day, my love 🌹</h1>
+    <p>Here are virtual roses for my baby 💖🐱</p>
+</div>
+
+<script>
+    /* Roses appear more often than hearts & cats */
+    const symbols = [
+        "🌹","🌹","🌹","🌹","🌹",
+        "🌹","🌹","🌹",
+        "💖","💕",
+        "🐱"
+    ];
+
+    function createFloat() {
+        const el = document.createElement("div");
+        el.className = "float";
+        el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.animationDuration = (Math.random() * 4 + 6) + "s";
+
+        document.body.appendChild(el);
+
+        setTimeout(() => {
+            el.remove();
+        }, 12000);
+    }
+
+    /* Fuller screen */
+    setInterval(createFloat, 200);
+</script>
+
+</body>
+</html>
